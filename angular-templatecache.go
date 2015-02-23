@@ -40,7 +40,7 @@ func Build(c *slurp.C, config Config) slurp.Stage {
 		for file := range in {
 			path, _ := filepath.Rel(file.Dir, file.Path)
 			path = filepath.ToSlash(path)
-			c.Infof("Adding %s.\n", path)
+			c.Infof("Adding %s", path)
 			b.Files[path] = file
 			defer file.Close() //Close files AFTER we have build our package.
 		}

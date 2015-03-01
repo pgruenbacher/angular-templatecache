@@ -52,16 +52,12 @@ func Build(c *slurp.C, config Config) slurp.Stage {
 			return
 		}
 
-		stat := slurp.FileInfo{}
-		stat.SetName(b.Name)
-		stat.SetSize(int64(buff.Len()))
-
 		sf := slurp.File{
 			Reader: buff,
 			Path:   b.Name,
 		}
-
-		sf.SetStat(&stat)
+		sf.FileInfo.SetName(b.Name)
+		sf.FileInfo.SetSize(int64(buff.Len()))
 
 		out <- sf
 	}
